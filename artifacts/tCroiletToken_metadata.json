@@ -155,6 +155,44 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Burn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Mint",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "previousOwner",
 						"type": "address"
 					},
@@ -449,6 +487,8 @@
 			}
 		],
 		"devdoc": {
+			"author": "Jared Kamp <jahkamp@gmail.com>",
+			"details": "ERC20 token contract with minting and burning capabilities.",
 			"errors": {
 				"ERC20InsufficientAllowance(address,uint256,uint256)": [
 					{
@@ -532,8 +572,34 @@
 				"balanceOf(address)": {
 					"details": "Returns the value of tokens owned by `account`."
 				},
+				"burn(uint256)": {
+					"details": "Burns tokens from the sender's balance.",
+					"params": {
+						"amount": "The amount to burn."
+					}
+				},
+				"burnFrom(address,uint256)": {
+					"details": "Burns tokens from a specific account (with allowance).",
+					"params": {
+						"account": "The account to burn from.",
+						"amount": "The amount to burn."
+					}
+				},
+				"constructor": {
+					"details": "Initializes the contract with an initial supply minted to the owner.",
+					"params": {
+						"initialOwner": "The address to set as the initial owner and recipient of initial tokens."
+					}
+				},
 				"decimals()": {
 					"details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5.05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the default value returned by this function, unless it's overridden. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
+				},
+				"mint(address,uint256)": {
+					"details": "Mints new tokens to a specified address. Only callable by the owner.",
+					"params": {
+						"amount": "The amount to mint.",
+						"to": "The recipient address."
+					}
 				},
 				"name()": {
 					"details": "Returns the name of the token."
@@ -560,6 +626,7 @@
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
 				}
 			},
+			"title": "tCroiletToken",
 			"version": 1
 		},
 		"userdoc": {
@@ -633,11 +700,11 @@
 			]
 		},
 		"contracts/tCroiletToken.sol": {
-			"keccak256": "0x8c8fdfd8b738db09e2cdb1a5634c1c0e2e412c4309f9daafc593868f5f5d6d4e",
+			"keccak256": "0xa607aec61f743c0db057b5ddc0f1952db8b801519c08c24fab5b06779e3cc7e1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2faea0bb6cd916f1fc622ac4b908f44a845aafec55668a4f1996f2b4e6d61d32",
-				"dweb:/ipfs/QmQALkWjtJGrwuPJsWxkxF56PjwBci8VA3Kk63HDqzsbgv"
+				"bzz-raw://ccb32ceadc6545b88b2959d0d12924284ac8c15305d88207f44a5a5b29f48eb5",
+				"dweb:/ipfs/QmT91JK7NN8npLyx5Bc1D9jTqZWcC6WXFWjwgL6vKz9gfp"
 			]
 		}
 	},
